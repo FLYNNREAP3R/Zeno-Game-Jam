@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float speed;
     private Rigidbody2D body;
-    
+    private int acornCount = 0;
+
+    public TMP_Text counterText;
 
     
    private void Awake()
@@ -34,4 +37,15 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, speed);
         
    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Checks if the player is interacting with the acorn via tag
+        if (collision.CompareTag("acorn") && collision.gameObject.activeSelf == true)
+        {
+            collision.gameObject.SetActive(false);
+            acornCount += 1;
+            counterText.text = "Acorns: " + acornCount;
+        }
+    }
 }
