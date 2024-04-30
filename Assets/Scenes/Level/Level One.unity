@@ -382,8 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d0ee8342068547b023c8ad2e42f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallWait: 2
-  destroyWeight: 1
+  fallDelay: 1
+  respawnTime: 3
 --- !u!50 &476796645
 Rigidbody2D:
   serializedVersion: 4
@@ -410,7 +410,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!251 &476796646
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00017264485, y: 0.31250522}
+  m_Offset: {x: 0.00017261505, y: -0.022751689}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -473,7 +473,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0253336, y: 0.55356354}
+  m_Size: {x: 1.0253336, y: 1.2240773}
   m_EdgeRadius: 0
 --- !u!212 &476796648
 SpriteRenderer:
