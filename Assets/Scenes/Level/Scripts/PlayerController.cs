@@ -10,7 +10,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     private int acornCount = 0;
 
+
     public TMP_Text counterText;
+
+
+    public float knockbackForce;
+    public float knockbackCounter;
+    public float knockbackTime;
+
+    public bool knockFromRight;
 
     
    private void Awake()
@@ -22,7 +30,25 @@ public class PlayerController : MonoBehaviour
    private void Update()
    {
         float horizontalInput = Input.GetAxis("Horizontal");
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        
+        // Checks if the player is being knocked back and the direction they are being knocked back from so player is knocked back in right direction
+        if (knockbackCounter <= 0)
+        {
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+        else
+        {
+            // If player is hit from the right, the player will go left
+            if (knockFromRight == true)
+            {
+                body.velocity = new Vector2(-knockbackForce, knockbackForce);
+            }
+            // If player is hit from the left, the player will go right
+            if (knockFromRight == false)
+            {
+                body.velocity = new Vector2(knockbackForce, knockbackForce);
+            }
+        }
 
         // Checks if "d" is pressed to move right and flips the character facing right
         if(horizontalInput > 0.01f)
@@ -45,6 +71,19 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             acornCount += 1;
+            counterText.text = "Acorns: " + acornCount;
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Checks if the player is running into the pinecone and if the player's collider is set to true
+        if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf == true)
+        {
+            // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
+            collision.gameObject.SetActive(false); 
+            acornCount = acornCount - 2;
             counterText.text = "Acorns: " + acornCount;
         }
     }

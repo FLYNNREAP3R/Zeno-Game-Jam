@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - acorn
+  - pinecone
   layers:
   - Default
   - TransparentFX
