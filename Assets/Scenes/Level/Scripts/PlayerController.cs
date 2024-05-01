@@ -5,8 +5,6 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] float speed;
     private Rigidbody2D body;
     private int acornCount = 0;
 
@@ -29,6 +27,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
    private void Update()
    {
+        Movement();
+        Jump();
+        
+   }
+
+    private void Movement()
+    {
         float horizontalInput = Input.GetAxis("Horizontal");
         
         // Checks if the player is being knocked back and the direction they are being knocked back from so player is knocked back in right direction
@@ -57,13 +62,28 @@ public class PlayerController : MonoBehaviour
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
+    }
 
-        // Checks to see if spacebar is pressed to initiate jump
-        if(Input.GetKey(KeyCode.Space))
-            body.velocity = new Vector2(body.velocity.x, speed);
-        
-   }
+    private void Jump()
+    {
+        // Checks to see if spacebar is pressed to initiate jump and is grounded
+        if(Input.GetKey(KeyCode.Space) && grounded)
+        {
+        body.velocity = new Vector2(body.velocity.x, jumpForce);
+        grounded = false;
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the player collides with an object tagged as "Ground"
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            grounded = true;
+        }
+    }
+
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Checks if the player is interacting with the acorn via tag
