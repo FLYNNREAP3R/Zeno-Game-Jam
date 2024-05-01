@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private GameObject ui_scoreObj;
     private uiScoreAudio uiScoreScript;
 
+    private GameObject playerAudioObj;
+    private PlayerCharacterAudio playerAudioScript;
+
+
     public TMP_Text counterText;
 
     public float knockbackForce;
@@ -33,6 +37,8 @@ public class PlayerController : MonoBehaviour
    {
         ui_scoreObj = GameObject.Find("UI");
         uiScoreScript = ui_scoreObj.GetComponent<uiScoreAudio>();
+        playerAudioObj = GameObject.Find("Player");
+        playerAudioScript = playerAudioObj.GetComponent<PlayerCharacterAudio>();
         body = GetComponent<Rigidbody2D>();
         StartCoroutine("Delay");
    }
@@ -81,9 +87,10 @@ public class PlayerController : MonoBehaviour
         // Checks to see if spacebar is pressed to initiate jump and is grounded
         if(Input.GetKey(KeyCode.Space) && grounded)
         {
-        body.velocity = new Vector2(body.velocity.x, jumpForce);
-        grounded = false;
-        StartCoroutine("Delay");
+            body.velocity = new Vector2(body.velocity.x, jumpForce);
+            playerAudioScript.jumpAudio();
+            grounded = false;
+            StartCoroutine("Delay");
         }
     }
 
@@ -122,12 +129,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "poop")
         {
             ReduceAcorn();
+            playerAudioScript.hurtAudio();
         }
         // Checks if the player is running into the pinecone or poop and if the player's collider is set to true
         if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf)
         {
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
+            playerAudioScript.hurtAudio();
             ReduceAcorn();
         }
     }

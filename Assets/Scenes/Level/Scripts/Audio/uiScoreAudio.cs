@@ -75,8 +75,8 @@ public class uiScoreAudio : MonoBehaviour
             currentClip = uiScoreUpAudio[curUpIdx + 1];
         else
             currentClip = uiScoreUpAudio[curUpIdx];
-        Debug.Log("Current ScoreUp Index: " + curUpIdx);
-        Debug.Log("Prev ScoreUp Index: " + prevUpIdx);
+        //Debug.Log("Current ScoreUp Index: " + curUpIdx);
+        //Debug.Log("Prev ScoreUp Index: " + prevUpIdx);
 
         uiAudioSource.PlayOneShot(currentClip);
         prevUpIdx = curUpIdx;
@@ -94,8 +94,8 @@ public class uiScoreAudio : MonoBehaviour
             currentClip = uiScoreDownAudio[curDownIdx + 1];
         else
             currentClip = uiScoreDownAudio[curDownIdx];
-        Debug.Log("Current ScoreDwn Index: " + curDownIdx);
-        Debug.Log("Prev ScoreDwn Index: " + prevDownIdx);
+        //Debug.Log("Current ScoreDwn Index: " + curDownIdx);
+        //Debug.Log("Prev ScoreDwn Index: " + prevDownIdx);
 
         uiAudioSource.PlayOneShot(currentClip);
         prevUpIdx = curDownIdx;
