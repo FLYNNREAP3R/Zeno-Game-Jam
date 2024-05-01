@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D body;
     private int acornCount = 0;
-    [SerializeField] private float speed;  // Movement speed
-    [SerializeField] private float jumpForce;
+    public float speed;  // Movement speed
+    public float jumpForce;
     private bool grounded;
     private float jumpDelay;
+
 
 
     public TMP_Text counterText;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
    private void Awake()
    {
         body = GetComponent<Rigidbody2D>();
-        StartCoroutine(Delay());
+        StartCoroutine("Delay");
    }
 
     // Start is called before the first frame update
@@ -79,11 +80,11 @@ public class PlayerController : MonoBehaviour
         {
         body.velocity = new Vector2(body.velocity.x, jumpForce);
         grounded = false;
-        StartCoroutine(Delay());
+        StartCoroutine("Delay");
         }
     }
 
-    void ResetJump()
+    private void ResetJump()
     {
         grounded = true;
         jumpDelay = 0;
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Checks if the player is interacting with the acorn via tag
-        if (collision.CompareTag("acorn") && collision.gameObject.activeSelf == true)
+        if (collision.CompareTag("acorn") && collision.gameObject.activeSelf)
         {
             collision.gameObject.SetActive(false);
             acornCount += 1;
@@ -114,13 +115,27 @@ public class PlayerController : MonoBehaviour
         {
             ResetJump();
         }
-        // Checks if the player is running into the pinecone and if the player's collider is set to true
-        if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf == true)
+        if (collision.gameObject.tag == "poop")
+        {
+            ReduceAcorn();
+        }
+        // Checks if the player is running into the pinecone or poop and if the player's collider is set to true
+        if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf)
         {
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
-            acornCount = acornCount - 2;
-            counterText.text = "Acorns: " + acornCount;
+            ReduceAcorn();
         }
     }
+
+
+
+    void ReduceAcorn() {
+        if (acornCount > 2)
+            {
+                acornCount = acornCount - 2;
+            }
+            counterText.text = "Acorns: " + acornCount;
+    }
+
 }

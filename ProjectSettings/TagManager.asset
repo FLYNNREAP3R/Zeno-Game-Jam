@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - acorn
-
+  - web
+  - pinecone
+  - Ground
+  - poop
   layers:
   - Default
   - TransparentFX
