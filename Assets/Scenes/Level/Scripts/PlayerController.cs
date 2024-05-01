@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float speed;
+    [SerializeField] float speed;
     private Rigidbody2D body;
     private int acornCount = 0;
 
@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
             acornCount += 1;
             counterText.text = "Acorns: " + acornCount;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
