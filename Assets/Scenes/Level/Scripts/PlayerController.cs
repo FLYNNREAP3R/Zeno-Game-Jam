@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool grounded;
     private float jumpDelay;
 
-
+    private GameObject ui_scoreObj;
+    private uiScoreAudio uiScoreScript;
 
     public TMP_Text counterText;
 
@@ -30,6 +31,8 @@ public class PlayerController : MonoBehaviour
     
    private void Awake()
    {
+        ui_scoreObj = GameObject.Find("UI");
+        uiScoreScript = ui_scoreObj.GetComponent<uiScoreAudio>();
         body = GetComponent<Rigidbody2D>();
         StartCoroutine("Delay");
    }
@@ -104,6 +107,7 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("acorn") && collision.gameObject.activeSelf)
         {
             collision.gameObject.SetActive(false);
+            uiScoreScript.scoreUpAudio(); // trigger score up audio
             acornCount += 1;
             counterText.text = "Acorns: " + acornCount;
         }
@@ -133,6 +137,7 @@ public class PlayerController : MonoBehaviour
     void ReduceAcorn() {
         if (acornCount > 2)
             {
+                uiScoreScript.scoreDownAudio(); // trigger score down audio
                 acornCount = acornCount - 2;
             }
             counterText.text = "Acorns: " + acornCount;
