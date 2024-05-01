@@ -19,12 +19,17 @@ public class PlayerController : MonoBehaviour
     public float knockbackTime;
 
     public bool knockFromRight;
+    uiScoreAudio ui_score;
 
-    
+
    private void Awake()
    {
         body = GetComponent<Rigidbody2D>();
-   }
+
+        // Get UI script for score audio triggers
+        GameObject ui_obj = GameObject.Find("UI");
+        ui_score = ui_obj.GetComponent<uiScoreAudio>();
+    }
 
     // Start is called before the first frame update
    private void Update()
@@ -71,6 +76,7 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             acornCount += 1;
+            ui_score.scoreUpAudio();
             counterText.text = "Acorns: " + acornCount;
         }
     }
@@ -83,6 +89,7 @@ public class PlayerController : MonoBehaviour
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false); 
             acornCount = acornCount - 2;
+            ui_score.scoreDownAudio();
             counterText.text = "Acorns: " + acornCount;
         }
     }
