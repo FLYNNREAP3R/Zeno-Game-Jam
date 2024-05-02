@@ -5,27 +5,29 @@ using UnityEngine;
 public class Web : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isSlowed;
-    [SerializeField] float slowDelay = 0.5f;
 
-    PlayerController playerController;
+    public PlayerController playerController;
     Rigidbody2D rb;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        playerController = GetComponent<PlayerController>();
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine("SlowWebMovement");
+            // This assigns the collision to knockback the player if they interact with the collision on an enemy by checking the tag.
+            playerController.speed = playerController.speed / 5;
+            playerController.jumpForce = playerController.jumpForce / 2;
+            Invoke("ResetPlayerSpeedAndJumpForce", 6f);
         }
+        gameObject.SetActive(false);
     }
 
-    IEnumerator SlowWebMovement()
+    private void ResetPlayerSpeedAndJumpForce()
     {
-        yield return new WaitForSeconds(slowDelay);
+        playerController.speed = 10;
+        playerController.jumpForce = 10;
     }
 }

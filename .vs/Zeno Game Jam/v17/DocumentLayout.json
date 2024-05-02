@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|d:\\unity\\game jams\\zeno gj 2024\\zeno game jam\\assets\\scenes\\level\\scripts\\fallingpoop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\level\\scripts\\fallingpoop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\assets\\scenes\\level\\scripts\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\level\\scripts\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|d:\\unity\\game jams\\zeno gj 2024\\zeno game jam\\assets\\scenes\\level\\scripts\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\level\\scripts\\web.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|d:\\unity\\game jams\\zeno gj 2024\\zeno game jam\\assets\\scenes\\level\\scripts\\fallingpoop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\level\\scripts\\fallingpoop.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\assets\\scenes\\level\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,30 +22,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FallingPoop.cs",
               "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
               "ToolTip": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
               "RelativeToolTip": "Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-01T11:11:13.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Web.cs",
               "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\Web.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Level\\Scripts\\Web.cs",
               "ToolTip": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\Web.cs",
               "RelativeToolTip": "Assets\\Scenes\\Level\\Scripts\\Web.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAzAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T23:50:35.313Z",
               "EditorCaption": ""
@@ -60,7 +60,8 @@
               "RelativeToolTip": "Assets\\Scenes\\Level\\Scripts\\PlayerController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T01:11:38.969Z"
+              "WhenOpened": "2024-04-30T01:11:38.969Z",
+              "EditorCaption": ""
             }
           ]
         }
