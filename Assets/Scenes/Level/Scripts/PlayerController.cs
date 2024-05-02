@@ -24,10 +24,9 @@ public class PlayerController : MonoBehaviour
     public float knockbackForce;
     public float knockbackCounter;
     public float knockbackTime;
-
     public bool knockFromRight;
 
-
+    public bool canMove = true;
     private void Start()
     {
         ResetJump();
@@ -46,8 +45,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
    private void Update()
    {
-        Movement();
-        Jump();
+        if (canMove)
+        {
+            Movement();
+            Jump();
+        }
    }
 
     private void Movement()
@@ -64,12 +66,14 @@ public class PlayerController : MonoBehaviour
             // If player is hit from the right, the player will go left
             if (knockFromRight == true)
             {
-                body.velocity = new Vector2(-knockbackForce, knockbackForce);
+                body.velocity = new Vector2(-knockbackForce, -knockbackForce);
+                
             }
             // If player is hit from the left, the player will go right
             if (knockFromRight == false)
             {
-                body.velocity = new Vector2(knockbackForce, knockbackForce);
+                body.velocity = new Vector2(knockbackForce, -knockbackForce);
+                
             }
         }
 
@@ -105,6 +109,7 @@ public class PlayerController : MonoBehaviour
         jumpDelay++;
         yield return new WaitForSeconds(jumpDelay);
         grounded = true;
+
     }
 
     
@@ -139,6 +144,20 @@ public class PlayerController : MonoBehaviour
             playerAudioScript.hurtAudio();
             ReduceAcorn();
         }
+
+        // Work in progress Willie
+        if (collision.gameObject.CompareTag("pinecone"))
+        {   
+
+            canMove = false;
+            if (!canMove)
+            {
+                
+                canMove = true;
+                
+            }
+            
+        }
     }
 
 
@@ -151,5 +170,9 @@ public class PlayerController : MonoBehaviour
             }
             counterText.text = "Acorns: " + acornCount;
     }
+
+    
+
+    
 
 }
