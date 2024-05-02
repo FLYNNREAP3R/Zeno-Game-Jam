@@ -28,6 +28,11 @@ public class uiScoreAudio : MonoBehaviour
     int randomIdx(AudioClip[] audiocliparray)
     {
         int idx = Random.Range(0, audiocliparray.Length);
+        //Fix bug where audio index would be outside the range of the audioClipArray.
+        if (idx < audiocliparray.Length)
+            idx = Random.Range(0, audiocliparray.Length - 2);
+        if (idx > audiocliparray.Length)
+            idx = Random.Range(audiocliparray.Length - 2, audiocliparray.Length);
         return idx;
     }
 
@@ -70,11 +75,16 @@ public class uiScoreAudio : MonoBehaviour
         curUpIdx = randomIdx(uiScoreUpAudio);
         AudioClip currentClip;
 
+        // 5/2/24 disabled if statement. Resolved in randomIdx function.
+
         // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
-        if (curUpIdx == prevUpIdx)
-            currentClip = uiScoreUpAudio[curUpIdx + 1];
-        else
-            currentClip = uiScoreUpAudio[curUpIdx];
+       
+        //if (curUpIdx == prevUpIdx)
+        //    currentClip = uiScoreUpAudio[curUpIdx + 1];
+        //else
+        //    currentClip = uiScoreUpAudio[curUpIdx];
+
+        currentClip = uiScoreUpAudio[curUpIdx];
         //Debug.Log("Current ScoreUp Index: " + curUpIdx);
         //Debug.Log("Prev ScoreUp Index: " + prevUpIdx);
 
@@ -89,11 +99,16 @@ public class uiScoreAudio : MonoBehaviour
         curDownIdx = randomIdx(uiScoreDownAudio);
         AudioClip currentClip;
 
+        // 5/2/24 disabled if statement. Resolved in randomIdx function.
+
         // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
-        if (curDownIdx == prevDownIdx)
-            currentClip = uiScoreDownAudio[curDownIdx + 1];
-        else
-            currentClip = uiScoreDownAudio[curDownIdx];
+
+        //if (curDownIdx == prevDownIdx)
+        //    currentClip = uiScoreDownAudio[curDownIdx + 1];
+        //else
+        //    currentClip = uiScoreDownAudio[curDownIdx];
+
+        currentClip = uiScoreDownAudio[curDownIdx];
         //Debug.Log("Current ScoreDwn Index: " + curDownIdx);
         //Debug.Log("Prev ScoreDwn Index: " + prevDownIdx);
 

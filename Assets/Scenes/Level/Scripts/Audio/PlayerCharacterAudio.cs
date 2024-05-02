@@ -28,6 +28,11 @@ public class PlayerCharacterAudio : MonoBehaviour
     int randomIdx(AudioClip[] audiocliparray)
     {
         int idx = Random.Range(0, audiocliparray.Length);
+        //Fix bug where audio index would be outside the range of the audioClipArray.
+        if (idx < audiocliparray.Length)
+            idx = Random.Range(0, audiocliparray.Length - 2);
+        if (idx > audiocliparray.Length)
+            idx = Random.Range(audiocliparray.Length - 2, audiocliparray.Length);
         return idx;
     }
 
@@ -37,11 +42,15 @@ public class PlayerCharacterAudio : MonoBehaviour
         curJumpIdx = randomIdx(jumpAudioarray);
         AudioClip currentClip;
 
+        // 5/2/24 disabled if statement. Resolved in randomIdx function.
         // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
-        if (curJumpIdx == prevJumpIdx)
-            currentClip = jumpAudioarray[curJumpIdx + 1];
-        else
-            currentClip = jumpAudioarray[curJumpIdx];
+
+        //if (curJumpIdx == prevJumpIdx)
+        //    currentClip = jumpAudioarray[curJumpIdx + 1];
+        //else
+        //    currentClip = jumpAudioarray[curJumpIdx];
+
+        currentClip = jumpAudioarray[curJumpIdx];
         //Debug.Log("Current jump Index: " + prevJumpIdx);
         //Debug.Log("Prev jump Index: " + prevJumpIdx);
 
@@ -50,22 +59,26 @@ public class PlayerCharacterAudio : MonoBehaviour
 
     }
 
-    // public void hurtAudio()
-    // {
-    //     //Create clip index number to play random sound
-    //     curHurtIdx = randomIdx(hurtAudioarray);
-    //     AudioClip currentClip;
+    public void hurtAudio()
+    {
+        //Create clip index number to play random sound
+        curHurtIdx = randomIdx(hurtAudioarray);
+        AudioClip currentClip;
 
-    //     // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
-    //     if (curHurtIdx == prevHurtIdx)
-    //         currentClip = hurtAudioarray[curHurtIdx + 1];
-    //     else
-    //         currentClip = hurtAudioarray[curHurtIdx];
-    //     //Debug.Log("Current hurt Index: " + prevHurtIdx);
-    //     //Debug.Log("Prev hurt Index: " + prevHurtIdx);
+        // 5/2/24 disabled if statement. Resolved in randomIdx function.
+        // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
+        
+        //if (curHurtIdx == prevHurtIdx)
+        //    currentClip = hurtAudioarray[curHurtIdx + 1];
+        //else
+        //    currentClip = hurtAudioarray[curHurtIdx];
 
-    //     playerCharAudioSource.PlayOneShot(currentClip);
-    //     prevHurtIdx = curHurtIdx;
+        currentClip = hurtAudioarray[curHurtIdx];
+        //Debug.Log("Current hurt Index: " + prevHurtIdx);
+        //Debug.Log("Prev hurt Index: " + prevHurtIdx);
 
-    // }
+        playerCharAudioSource.PlayOneShot(currentClip);
+        prevHurtIdx = curHurtIdx;
+
+    }
 }
