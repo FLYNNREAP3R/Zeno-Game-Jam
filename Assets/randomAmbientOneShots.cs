@@ -22,7 +22,7 @@ public class randomAmbientOneShots : MonoBehaviour
     
 
     private int curIdx;
-    private int prevIdx;
+    //private int prevIdx;
 
 
     // Start is called before the first frame update
@@ -64,8 +64,8 @@ public class randomAmbientOneShots : MonoBehaviour
         currentClip = oneShots[curIdx];
         oneShotsAudioSource.clip = currentClip;
         oneShotsAudioSource.Play();
-        Debug.Log("Oneshot triggered.");
-        prevIdx = curIdx;
+        //Debug.Log("Oneshot triggered.");
+        //prevIdx = curIdx;
 
     }   
     
@@ -75,9 +75,9 @@ public class randomAmbientOneShots : MonoBehaviour
         float playVol = Random.Range(volMin, volMax);
         float playPitch = Random.Range(pitchMin, pitchMax); 
         oneShotsAudioSource.volume = playVol;
-        Debug.Log("vol: " + playVol);
+        //Debug.Log("vol: " + playVol);
         oneShotsAudioSource.pitch = playPitch;
-        Debug.Log("pitch: " + playPitch);
+        //Debug.Log("pitch: " + playPitch);
 
     }
 }

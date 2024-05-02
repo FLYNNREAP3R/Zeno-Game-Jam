@@ -11,12 +11,26 @@ public class FallingPoop : MonoBehaviour
     private Vector3 defaultPos;
     private bool crossedPlayer;
 
+    private GameObject poopObject;
+    private FallingPoopAudio poopPlayScript;
+
+    private void Awake()
+    {
+        poopObject = GameObject.Find("Falling Poop");
+        poopPlayScript = poopObject.GetComponent<FallingPoopAudio>();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         defaultPos = CalculateDefaultPosition();
+
         StartCoroutine(MakePoopFall());
+        StartCoroutine(DelayAudio());
+        
+
     }
 
     // Calculate the default position based on the player's position relative to the camera
@@ -40,9 +54,11 @@ public class FallingPoop : MonoBehaviour
 
     IEnumerator MakePoopFall()
     {
+
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
+
             transform.Translate(Vector3.down * Time.deltaTime * speed);
 
             if (!crossedPlayer && transform.position.y < playerController.transform.position.y)
@@ -56,8 +72,16 @@ public class FallingPoop : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, defaultPos.y, 0); // Reset vertically
                 crossedPlayer = false; // Reset the flag
             }
+            
             yield return null;
         }
+    }
+
+    IEnumerator DelayAudio()
+    {
+    
+        yield return new WaitForSeconds(2.0f);
+        poopPlayScript.poopAudio();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
