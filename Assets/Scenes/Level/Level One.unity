@@ -1155,7 +1155,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.159
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1185,7 +1185,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.214
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1266,7 +1266,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
   m_audioClip: {fileID: 8300000, guid: ecefe99e9a70b744ab5108c6bf53779f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.183
+  m_Volume: 0.356
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1611,7 +1611,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: -0.17
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -1675,7 +1675,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.262
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1756,17 +1756,17 @@ AudioReverbZone:
   m_Enabled: 1
   m_MinDistance: 10
   m_MaxDistance: 15
-  m_ReverbPreset: 26
+  m_ReverbPreset: 16
   m_Room: -1000
-  m_RoomHF: -151
-  m_DecayTime: 7.56
-  m_DecayHFRatio: 0.91
-  m_Reflections: -626
-  m_ReflectionsDelay: 0.02
-  m_Reverb: 774
-  m_ReverbDelay: 0.03
+  m_RoomHF: -3300
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.54
+  m_Reflections: -2560
+  m_ReflectionsDelay: 0.162
+  m_Reverb: -229
+  m_ReverbDelay: 0.088
   m_HFReference: 5000
-  m_Diffusion: 100
+  m_Diffusion: 79
   m_Density: 100
   m_LFReference: 250
   m_RoomLF: 0
@@ -1889,7 +1889,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.456
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1916,11 +1916,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9285d386d6dc754393d63ec5f01aca3, type: 3}
   - {fileID: 8300000, guid: e50ea025237362c4d96190f2737e94f7, type: 3}
   - {fileID: 8300000, guid: 26460cc8e79bfc8469e00976d26d1fae, type: 3}
-  - {fileID: 8300000, guid: 1a33f3e7473f7f648bded50ff8dae957, type: 3}
+  - {fileID: 8300000, guid: 0bc95d4df8d72e7438efb8e48fde9047, type: 3}
   - {fileID: 8300000, guid: fed40e7f7f6be3a40b98a7d3166670da, type: 3}
   - {fileID: 8300000, guid: 10966499fe423014aa26cdd8a4bad25b, type: 3}
-  - {fileID: 8300000, guid: fa70d71ea280c0e41bb4f23989cf6187, type: 3}
-  - {fileID: 8300000, guid: cb9777f2ffd19ba4ea183e3266088120, type: 3}
+  - {fileID: 8300000, guid: 44d03e902b39f60408e667b15fd1f8be, type: 3}
+  - {fileID: 8300000, guid: a342cd360694dc346bdf4ba4fa007422, type: 3}
+  - {fileID: 8300000, guid: e50ea025237362c4d96190f2737e94f7, type: 3}
   - {fileID: 8300000, guid: f877fa3b4e6a75c4cb06a27ba79c2ea7, type: 3}
   pitchMin: 0.5
   pitchMax: 1.8
@@ -2182,21 +2183,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 58506846863563973, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
-      propertyPath: m_Size.x
-      value: 1.0301797
-      objectReference: {fileID: 0}
-    - target: {fileID: 58506846863563973, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.0025956333
-      objectReference: {fileID: 0}
     - target: {fileID: 2616603906367836152, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
       propertyPath: m_Name
       value: Falling Platform
-      objectReference: {fileID: 0}
-    - target: {fileID: 2616603906367836152, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
-      propertyPath: m_TagString
-      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 5633370970798967701, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2237,10 +2226,6 @@ PrefabInstance:
     - target: {fileID: 5633370970798967701, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7656129155552026392, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
-      propertyPath: fallDelay
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2313,7 +2298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5999350810146270221, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
       propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
-      value: 0.603
+      value: 0.224
       objectReference: {fileID: 0}
     - target: {fileID: 7364278093280899174, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
       propertyPath: m_Name

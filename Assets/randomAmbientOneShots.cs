@@ -16,8 +16,8 @@ public class randomAmbientOneShots : MonoBehaviour
     public float pitchMin = 0.5f;
     public float pitchMax = 1.8f;
     
-    public float volMin = 0.6f;
-    public float volMax = 1.0f;
+    public float volMin = 0.3f;
+    public float volMax = 0.7f;
 
     
 

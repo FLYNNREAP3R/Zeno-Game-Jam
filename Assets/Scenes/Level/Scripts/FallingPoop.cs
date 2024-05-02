@@ -13,6 +13,7 @@ public class FallingPoop : MonoBehaviour
 
     private GameObject poopObject;
     private FallingPoopAudio poopPlayScript;
+    private bool playedAudio;
 
     private void Awake()
     {
@@ -26,10 +27,12 @@ public class FallingPoop : MonoBehaviour
     {
         cam = Camera.main;
         defaultPos = CalculateDefaultPosition();
-
+        playedAudio = false;
         StartCoroutine(MakePoopFall());
+        // Plays audio for first poop to fall on wake
         StartCoroutine(DelayAudio());
-        
+
+
 
     }
 
@@ -51,7 +54,7 @@ public class FallingPoop : MonoBehaviour
     return new Vector3(transform.position.x, yPos, transform.position.z);
     }
 
-
+    // TODO: Allow audio to be re-triggered once if poop does not hit player.
     IEnumerator MakePoopFall()
     {
 
@@ -71,8 +74,17 @@ public class FallingPoop : MonoBehaviour
                 float randomSpawnPointsForPoop = Random.Range(-cam.orthographicSize, cam.orthographicSize); // Randomize the horizontal position within the camera's view
                 transform.position = new Vector3(transform.position.x, defaultPos.y, 0); // Reset vertically
                 crossedPlayer = false; // Reset the flag
+                // Check played audio bool
+                // Prevents clip from being played more than once
+                while (!playedAudio)
+                {
+                    StartCoroutine(DelayAudio());
+                    
+                    playedAudio = true;
+                }
             }
-            
+            // Resets played audio bool when object is reset but did not hit player
+            playedAudio = false;
             yield return null;
         }
     }
@@ -102,6 +114,9 @@ public class FallingPoop : MonoBehaviour
         gameObject.SetActive(true);
         defaultPos = CalculateDefaultPosition();
         transform.position = defaultPos;
+
+        // Resets play audio bool for when object does hit player
+        playedAudio = false;
     }
 
     private void ResetPlayerSpeedAndJumpForce()
