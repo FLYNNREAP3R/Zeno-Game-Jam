@@ -4,57 +4,85 @@ using UnityEngine;
 
 public class FallingPoop : MonoBehaviour
 {
-
     public int speed;
     public Camera cam;
     public PlayerController playerController;
 
-    Vector2 defaultPos;
-
+    private Vector3 defaultPos;
+    private bool crossedPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-        defaultPos = transform.position;
+        defaultPos = CalculateDefaultPosition();
+        StartCoroutine(MakePoopFall());
     }
 
-    // Update is called once per frame
-    void Update()
+    // Calculate the default position based on the player's position relative to the camera
+    private Vector3 CalculateDefaultPosition()
+    {   
+    // Get the position of the player relative to the camera viewport
+    Vector3 playerViewportPos = cam.WorldToViewportPoint(playerController.transform.position);
+    
+    // Calculate the height of the camera viewport
+    float camHeight = 2f * cam.orthographicSize;
+
+    // Calculate the vertical position of the player within the camera viewport
+    float playerCamPosY = playerViewportPos.y * camHeight;
+    
+    // Calculate the offset from the initial position of the poop
+    float yPos = transform.position.y + (transform.position.y - playerController.transform.position.y);
+    
+    return new Vector3(transform.position.x, yPos, transform.position.z);
+    }
+
+
+    IEnumerator MakePoopFall()
     {
-        StartCoroutine( "MakePoopFall" );
-    }
-
-    IEnumerator MakePoopFall() {
-        yield return new WaitForSeconds( 5.0f );
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
-        float distanceFromObjectToBorder = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane)).x;
-        var randomSpawnPointsForPoop = Random.Range(-distanceFromObjectToBorder,distanceFromObjectToBorder);
-
-        if (transform.position.y < -3)
+        yield return new WaitForSeconds(2.0f);
+        while (true)
         {
-            transform.position = new Vector3(randomSpawnPointsForPoop,5,0);
+            transform.Translate(Vector3.down * Time.deltaTime * speed);
+
+            if (!crossedPlayer && transform.position.y < playerController.transform.position.y)
+            {
+                crossedPlayer = true;
+            }
+
+            if (crossedPlayer && transform.position.y < defaultPos.y)
+            {
+                float randomSpawnPointsForPoop = Random.Range(-cam.orthographicSize, cam.orthographicSize); // Randomize the horizontal position within the camera's view
+                transform.position = new Vector3(transform.position.x, defaultPos.y, 0); // Reset vertically
+                crossedPlayer = false; // Reset the flag
+            }
+            yield return null;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             // This assigns the collision to knockback the player if they interact with the collision on an enemy by checking the tag.
-            playerController.speed = playerController.speed - 8;
-            Invoke("ResetPlayerSpeed",6f);
+            playerController.speed = playerController.speed / 5;
+            playerController.jumpForce = playerController.jumpForce / 2;
+            Invoke("ResetPlayerSpeedAndJumpForce", 6f);
         }
         gameObject.SetActive(false);
         Invoke("ResetPoop", 1f);
     }
 
-    private void ResetPoop() {
+    private void ResetPoop()
+    {
         gameObject.SetActive(true);
+        defaultPos = CalculateDefaultPosition();
         transform.position = defaultPos;
     }
 
-    private void ResetPlayerSpeed() {
+    private void ResetPlayerSpeedAndJumpForce()
+    {
         playerController.speed = 10;
+        playerController.jumpForce = 10;
     }
 }
