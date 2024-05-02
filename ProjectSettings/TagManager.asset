@@ -9,6 +9,7 @@ TagManager:
   - pinecone
   - Ground
   - poop
+  - Win
   layers:
   - Default
   - TransparentFX
