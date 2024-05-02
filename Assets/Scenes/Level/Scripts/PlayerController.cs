@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCharacterAudio playerAudioScript;
     
     public TMP_Text counterText;
+    public TMP_Text winText;
 
     public float knockbackForce;
     public float knockbackCounter;
@@ -123,6 +124,13 @@ public class PlayerController : MonoBehaviour
             uiScoreScript.scoreUpAudio(); // trigger score up audio
             acornCount += 1;
             counterText.text = "Acorns: " + acornCount;
+        }
+
+        if (collision.CompareTag("Win") && collision.gameObject.activeSelf)
+        {
+            winText.gameObject.SetActive(false);
+            Time.timeScale = 0;
+
         }
     }
 
