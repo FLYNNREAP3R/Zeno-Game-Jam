@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("Win") && collision.gameObject.activeSelf)
         {
-            winText.gameObject.SetActive(false);
+            winText.gameObject.SetActive(true);
             Time.timeScale = 0;
 
         }
