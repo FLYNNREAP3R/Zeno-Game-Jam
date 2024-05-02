@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject playerAudioObj;
     private PlayerCharacterAudio playerAudioScript;
-
-
+    
     public TMP_Text counterText;
 
     public float knockbackForce;
@@ -27,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public bool knockFromRight;
 
     public bool canMove = true;
+
     private void Start()
     {
         ResetJump();
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
    private void Update()
    {
+        
         if (canMove)
         {
             Movement();
@@ -134,14 +135,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "poop")
         {
             ReduceAcorn();
-            playerAudioScript.hurtAudio();
+            // playerAudioScript.hurtAudio();
         }
         // Checks if the player is running into the pinecone or poop and if the player's collider is set to true
         if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf)
         {
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
-            playerAudioScript.hurtAudio();
+            // playerAudioScript.hurtAudio();
             ReduceAcorn();
         }
 
@@ -152,7 +153,6 @@ public class PlayerController : MonoBehaviour
             canMove = false;
             if (!canMove)
             {
-                
                 canMove = true;
                 
             }
