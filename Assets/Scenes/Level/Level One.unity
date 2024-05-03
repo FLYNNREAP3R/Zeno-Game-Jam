@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Acorn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -473,6 +477,10 @@ PrefabInstance:
     - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
       propertyPath: m_Name
       value: Acorn (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1979,6 +1987,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Acorn (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2035,6 +2047,10 @@ PrefabInstance:
     - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
       propertyPath: m_Name
       value: Acorn (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2187,6 +2203,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Falling Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 2616603906367836152, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633071876590238262, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
+      propertyPath: Priority
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633071876590238262, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
+      propertyPath: m_Volume
+      value: 0.574
+      objectReference: {fileID: 0}
     - target: {fileID: 5633370970798967701, guid: d9b3daefcfa23984390d5c80afa0a851, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.66
@@ -2293,16 +2321,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 919199255}
     - target: {fileID: 5999350810146270221, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
+      propertyPath: Priority
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999350810146270221, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.426
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 5999350810146270221, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
       propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
-      value: 0.224
+      value: 0.309
       objectReference: {fileID: 0}
     - target: {fileID: 7364278093280899174, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
       propertyPath: m_Name
       value: Falling Poop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364278093280899174, guid: 272080956fa8b4d24be0038df0ee88a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2439,6 +2475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Acorn
       objectReference: {fileID: 0}
+    - target: {fileID: 4428158071542618497, guid: 6edf19dd21b37304c9388ca36fd2e2cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2452,6 +2492,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2546425453431102556, guid: 32b39d1207b9e63428491532eddd1ad0, type: 3}
+      propertyPath: m_Pitch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546425453431102556, guid: 32b39d1207b9e63428491532eddd1ad0, type: 3}
+      propertyPath: Priority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2546425453431102556, guid: 32b39d1207b9e63428491532eddd1ad0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3907477623800333327, guid: 32b39d1207b9e63428491532eddd1ad0, type: 3}
       propertyPath: m_Name
       value: Pinecone
