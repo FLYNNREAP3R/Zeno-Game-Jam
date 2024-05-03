@@ -11,12 +11,29 @@ public class FallingPoop : MonoBehaviour
     private Vector3 defaultPos;
     private bool crossedPlayer;
 
+    private GameObject poopObject;
+    private FallingPoopAudio poopPlayScript;
+    private bool playedAudio;
+
+    private void Awake()
+    {
+        poopObject = GameObject.Find("Falling Poop");
+        poopPlayScript = poopObject.GetComponent<FallingPoopAudio>();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
         defaultPos = CalculateDefaultPosition();
+        playedAudio = false;
         StartCoroutine(MakePoopFall());
+        // Plays audio for first poop to fall on wake
+        StartCoroutine(DelayAudio());
+
+
+
     }
 
     // Calculate the default position based on the player's position relative to the camera
@@ -37,12 +54,14 @@ public class FallingPoop : MonoBehaviour
     return new Vector3(transform.position.x, yPos, transform.position.z);
     }
 
-
+    // TODO: Allow audio to be re-triggered once if poop does not hit player.
     IEnumerator MakePoopFall()
     {
+
         yield return new WaitForSeconds(2.0f);
         while (true)
         {
+
             transform.Translate(Vector3.down * Time.deltaTime * speed);
 
             if (!crossedPlayer && transform.position.y < playerController.transform.position.y)
@@ -55,9 +74,26 @@ public class FallingPoop : MonoBehaviour
                 float randomSpawnPointsForPoop = Random.Range(-cam.orthographicSize, cam.orthographicSize); // Randomize the horizontal position within the camera's view
                 transform.position = new Vector3(transform.position.x, defaultPos.y, 0); // Reset vertically
                 crossedPlayer = false; // Reset the flag
+                // Check played audio bool
+                // Prevents clip from being played more than once
+                while (!playedAudio)
+                {
+                    StartCoroutine(DelayAudio());
+                    
+                    playedAudio = true;
+                }
             }
+            // Resets played audio bool when object is reset but did not hit player
+            playedAudio = false;
             yield return null;
         }
+    }
+
+    IEnumerator DelayAudio()
+    {
+    
+        yield return new WaitForSeconds(2.0f);
+        poopPlayScript.poopAudio();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -78,6 +114,9 @@ public class FallingPoop : MonoBehaviour
         gameObject.SetActive(true);
         defaultPos = CalculateDefaultPosition();
         transform.position = defaultPos;
+
+        // Resets play audio bool for when object does hit player
+        playedAudio = false;
     }
 
     private void ResetPlayerSpeedAndJumpForce()
