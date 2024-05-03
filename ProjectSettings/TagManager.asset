@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - poop
   - Win
+  - developer
   layers:
   - Default
   - TransparentFX

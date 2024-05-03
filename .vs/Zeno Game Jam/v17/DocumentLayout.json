@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|d:\\unity\\game jams\\zeno gj 2024\\zeno game jam\\assets\\scenes\\level\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|d:\\unity\\game jams\\zeno gj 2024\\zeno game jam\\assets\\scenes\\main menu\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\main menu\\scripts\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Hyperlinks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Hyperlinks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\assets\\scenes\\level\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ED9FF099-3AF6-11FE-C143-DDE9F74A423E}|Assembly-CSharp.csproj|solutionrelative:assets\\scenes\\level\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -22,11 +30,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Main Menu\\Scripts\\MainMenu.cs",
+              "RelativeDocumentMoniker": "Assets\\Scenes\\Main Menu\\Scripts\\MainMenu.cs",
+              "ToolTip": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Main Menu\\Scripts\\MainMenu.cs",
+              "RelativeToolTip": "Assets\\Scenes\\Main Menu\\Scripts\\MainMenu.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T12:26:15.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hyperlinks.cs",
+              "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Hyperlinks.cs",
+              "RelativeDocumentMoniker": "Assets\\Hyperlinks.cs",
+              "ToolTip": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Hyperlinks.cs",
+              "RelativeToolTip": "Assets\\Hyperlinks.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-03T12:08:56.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "FallingPoop.cs",
               "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Level\\Scripts\\FallingPoop.cs",
@@ -38,7 +70,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Web.cs",
               "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\Web.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Level\\Scripts\\Web.cs",
@@ -50,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "D:\\Unity\\Game Jams\\Zeno GJ 2024\\Zeno Game Jam\\Assets\\Scenes\\Level\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scenes\\Level\\Scripts\\PlayerController.cs",
@@ -58,8 +90,7 @@
               "RelativeToolTip": "Assets\\Scenes\\Level\\Scripts\\PlayerController.cs",
               "ViewState": "AQIAAG4AAAAAAAAAAAAwwIIAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T01:11:38.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T01:11:38.969Z"
             }
           ]
         }
