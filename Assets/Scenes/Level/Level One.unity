@@ -497,13 +497,14 @@ GameObject:
   m_Component:
   - component: {fileID: 457440639}
   - component: {fileID: 457440638}
+  - component: {fileID: 457440640}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &457440638
 AudioSource:
   m_ObjectHideFlags: 0
@@ -516,8 +517,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 27b3f9f44d0e973489a56f5a966178b3, type: 2}
   m_audioClip: {fileID: 8300000, guid: b00b2729ecb03f043a20a45cbb284382, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.238
-  m_Pitch: -1.22
+  m_Volume: 0
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -615,6 +616,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457440640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457440636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829e453aee3e39a4397563d90e284ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  duration: 1
+  targetVol: 0.094
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +785,7 @@ MonoBehaviour:
   dampTime: 0.15
   target: {fileID: 919199254}
   cam: {fileID: 519420031}
+  envAudio: {fileID: 1190920066}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,13 +1264,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.475
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 81
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1402,7 +1419,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
   m_audioClip: {fileID: 8300000, guid: ecefe99e9a70b744ab5108c6bf53779f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.356
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1951,7 +1968,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.625
   m_Pitch: 0.59
   Loop: 0
   Mute: 0
@@ -1995,7 +2012,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.198
       inSlope: 0
       outSlope: 0
       tangentMode: 0
