@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private bool grounded;
     private float jumpDelay;
 
+    
+
     private GameObject ui_scoreObj;
     private uiScoreAudio uiScoreScript;
 
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour
     public float knockbackTime;
     public bool knockFromRight;
 
-    public bool canMove = true;
+    public bool canMove;
+
+    
 
     private void Start()
     {
@@ -40,24 +44,23 @@ public class PlayerController : MonoBehaviour
         playerAudioObj = GameObject.Find("Player");
         playerAudioScript = playerAudioObj.GetComponent<PlayerCharacterAudio>();
         body = GetComponent<Rigidbody2D>();
-        StartCoroutine("Delay");
+        StartCoroutine("Delay");  
+        canMove = true;  
    }
 
     // Start is called before the first frame update
    private void Update()
-   {
-        
+   {    
         if (canMove)
         {
             Movement();
             Jump();
-        }
+        }      
    }
 
     private void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        
         // Checks if the player is being knocked back and the direction they are being knocked back from so player is knocked back in right direction
         if (knockbackCounter <= 0)
         {
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
+        
     }
 
     private void Jump()
@@ -110,11 +114,9 @@ public class PlayerController : MonoBehaviour
     {
         jumpDelay++;
         yield return new WaitForSeconds(jumpDelay);
-        grounded = true;
-
+        grounded = true;        
     }
 
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Checks if the player is interacting with the acorn via tag
@@ -150,26 +152,13 @@ public class PlayerController : MonoBehaviour
         {
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
+            canMove = false;
+            StartCoroutine(pineconeStunCoroutine());
             // playerAudioScript.hurtAudio();
             ReduceAcorn();
         }
-
-        // Work in progress Willie
-        if (collision.gameObject.CompareTag("pinecone"))
-        {   
-
-            canMove = false;
-            if (!canMove)
-            {
-                canMove = true;
-                
-            }
-            
-        }
     }
-
-
-
+        
     void ReduceAcorn() {
         if (acornCount > 2)
             {
@@ -179,8 +168,15 @@ public class PlayerController : MonoBehaviour
             counterText.text = "Acorns: " + acornCount;
     }
 
-    
+    IEnumerator pineconeStunCoroutine()
+    {
+        float stunDuration = 2.0f;
 
+        yield return new WaitForSeconds(stunDuration);
+        canMove = true;
+        
+    }
+    
     
 
 }
