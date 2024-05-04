@@ -29,9 +29,6 @@ public class PlayerCharacterAudio : MonoBehaviour
         playerCharAudioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-    }
     int randomIdx(AudioClip[] audiocliparray)
     {
         int idx = Random.Range(0, audiocliparray.Length);
@@ -44,13 +41,6 @@ public class PlayerCharacterAudio : MonoBehaviour
     }
 
 
-    public void playStep()
-    {
-
-            StartCoroutine(stepWait());
-
-    }
-
     public void stopStep()
     {
         playerStepSource.Stop();
@@ -62,6 +52,8 @@ public class PlayerCharacterAudio : MonoBehaviour
         curStepIdx = randomIdx(ftStepArray);
         AudioClip currentClip;
         currentClip = ftStepArray[curStepIdx];
+        playerStepSource.clip = currentClip;
+       // playerStepSource.Play();
         playerStepSource.PlayOneShot(currentClip);
         prevStepIdx = curStepIdx;
 
@@ -97,9 +89,14 @@ public class PlayerCharacterAudio : MonoBehaviour
 
     }
 
-    IEnumerator stepWait()
+   public IEnumerator stepWait()
     {
-        yield return new WaitUntil(() => playerStepSource.isPlaying == false);
-        ftstepClip();
+        while (true)
+        {
+            // Select and play new clip
+            ftstepClip();
+            // wait until clip is done
+            yield return new WaitForSeconds(playerStepSource.clip.length + .05f);
+        }
     }
 }

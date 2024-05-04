@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private GameObject playerAudioObj;
     private PlayerCharacterAudio playerAudioScript;
     private PlayerFootStepAudio playerFtstp;
+    private Coroutine ftstpRoutine;
     
     public TMP_Text counterText;
     public TMP_Text winText;
@@ -55,6 +56,26 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             Movement();
+            if (grounded && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A)))
+            {
+               //  Debug.Log("Key Down");
+                if (ftstpRoutine == null)
+                //playerAudioScript.ftstepClip();
+                    ftstpRoutine = StartCoroutine(playerAudioScript.stepWait());
+            }
+            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || !grounded)
+            {
+
+                //Debug.Log("Key Up");
+                if (ftstpRoutine != null)
+                {
+                    //playerAudioScript.stopStep();
+
+                    StopCoroutine(ftstpRoutine);
+                    ftstpRoutine = null;
+                }
+            }
+
             Jump();
         }
         
@@ -90,27 +111,11 @@ public class PlayerController : MonoBehaviour
         if (horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                playerAudioScript.playStep();
-            }
-            else if (Input.GetKeyUp(KeyCode.D))
-            {
-                playerAudioScript.stopStep();
-            }
         }
 
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            playerAudioScript.playStep();
-        }
-        else if (Input.GetKeyUp(KeyCode.A))
-        {
-            playerAudioScript.stopStep();
-        }
 
 
     }
