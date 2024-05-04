@@ -11,18 +11,24 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     private bool grounded;
     private float jumpDelay;
+    private float moveDelay;
 
     private GameObject ui_scoreObj;
     private uiScoreAudio uiScoreScript;
 
+   //private GameObject pineconeObj;
+    private PineconeAudio pineconeAudio;
+
     private GameObject playerAudioObj;
     private PlayerCharacterAudio playerAudioScript;
+    private PlayerFootStepAudio playerFtstp;
+    private Coroutine ftstpRoutine;
     
     public TMP_Text counterText;
     public TMP_Text winText;
 
     public float knockbackForce;
-    public float knockbackCounter;
+    public float knockbackCounter = 0;
     public float knockbackTime;
     public bool knockFromRight;
 
@@ -50,13 +56,35 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             Movement();
+            if (grounded && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A)))
+            {
+               //  Debug.Log("Key Down");
+                if (ftstpRoutine == null)
+                //playerAudioScript.ftstepClip();
+                    ftstpRoutine = StartCoroutine(playerAudioScript.stepWait());
+            }
+            if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || !grounded)
+            {
+
+                //Debug.Log("Key Up");
+                if (ftstpRoutine != null)
+                {
+                    //playerAudioScript.stopStep();
+
+                    StopCoroutine(ftstpRoutine);
+                    ftstpRoutine = null;
+                }
+            }
+
             Jump();
         }
+        
    }
 
     private void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
+        
         
         // Checks if the player is being knocked back and the direction they are being knocked back from so player is knocked back in right direction
         if (knockbackCounter <= 0)
@@ -80,12 +108,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // Checks if "d" is pressed to move right and flips the character facing right
-        if(horizontalInput > 0.01f)
+        if (horizontalInput > 0.01f)
+        {
             transform.localScale = Vector3.one;
+        }
 
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
+
+
     }
 
     private void Jump()
@@ -111,6 +143,12 @@ public class PlayerController : MonoBehaviour
         jumpDelay++;
         yield return new WaitForSeconds(jumpDelay);
         grounded = true;
+        moveDelay++;
+        yield return new WaitForSeconds(moveDelay);
+        moveDelay = 0;
+        knockbackCounter = 0;
+        canMove = true;
+
 
     }
 
@@ -148,25 +186,29 @@ public class PlayerController : MonoBehaviour
         // Checks if the player is running into the pinecone or poop and if the player's collider is set to true
         if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf)
         {
+            // play pinecone explode audio
+            pineconeAudio = collision.gameObject.GetComponent<PineconeAudio>();
+            pineconeAudio.PlayClipAt(pineconeAudio.pickClip(), collision.gameObject.transform.position);
+            //pineconeAudio.pineconeCollectAudio(collision.gameObject.transform.position);
+            
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
+            
+            // play character hurt audio
             playerAudioScript.hurtAudio();
             ReduceAcorn();
-        }
-
-        // Work in progress Willie
-        if (collision.gameObject.CompareTag("pinecone"))
-        {   
-
-            canMove = false;
-            if (!canMove)
-            {
-                canMove = true;
-                
-            }
-            
+            Stunned();
         }
     }
+    private void Stunned()
+    {
+        // Sets move to false adds 1 to knockback counter then sets a delay to reset movement
+        canMove = false;
+        knockbackCounter++;
+        StartCoroutine("Delay");
+    }
+
+   
 
 
 
