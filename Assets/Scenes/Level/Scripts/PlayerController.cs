@@ -151,12 +151,13 @@ public class PlayerController : MonoBehaviour
         // Checks if the player is running into the pinecone or poop and if the player's collider is set to true
         if (collision.gameObject.tag == "pinecone" && collision.gameObject.activeSelf)
         {
+            // play pinecone explode audio
             pineconeAudio = collision.gameObject.GetComponent<PineconeAudio>();
-            pineconeAudio.pineconeCollectAudio(collision.gameObject.transform.position);
+            pineconeAudio.PlayClipAt(pineconeAudio.pickClip(), collision.gameObject.transform.position);
+            //pineconeAudio.pineconeCollectAudio(collision.gameObject.transform.position);
             
             // Destroys pinecone actor when player collides with object. Knocks back the player and subtracts 2 from the acorn counter
             collision.gameObject.SetActive(false);
-            // play pinecone explode audio
             
             // play character hurt audio
             playerAudioScript.hurtAudio();

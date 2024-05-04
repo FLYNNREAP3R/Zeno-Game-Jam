@@ -8,15 +8,21 @@ public class Web : MonoBehaviour
 
     public PlayerController playerController;
     Rigidbody2D rb;
+
+    public WebAudio webAudio;
+    Vector3 webPos;
     void Start()
     {
-
+        webPos = gameObject.transform.position;
+        webPos.z = -10;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            //webAudio.WebCollectAudio(playerController.transform.position);
+            webAudio.PlayClipAt(webAudio.pickClip(), gameObject.transform.position);
             // This assigns the collision to knockback the player if they interact with the collision on an enemy by checking the tag.
             playerController.speed = playerController.speed / 5;
             playerController.jumpForce = playerController.jumpForce / 2;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PineconeAudio : MonoBehaviour
 {
 
-    [SerializeField] AudioSource coneSource;
+   // [SerializeField] AudioSource coneSource;
     [SerializeField] AudioClip[] coneClips;
 
     int curIdx;
@@ -14,7 +14,7 @@ public class PineconeAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coneSource = GetComponent<AudioSource>();
+      //  coneSource = GetComponent<AudioSource>();
     }
 
     int randomIdx(AudioClip[] audiocliparray)
@@ -30,7 +30,7 @@ public class PineconeAudio : MonoBehaviour
 
     public void pineconeCollectAudio(Vector3 conePos)
     {
-       // Debug.Log("pinecone audio triggered");
+        // Debug.Log("pinecone audio triggered");
         curIdx = randomIdx(coneClips);
         if (curIdx == prevIdx)
         {
@@ -43,10 +43,24 @@ public class PineconeAudio : MonoBehaviour
         AudioSource.PlayClipAtPoint(currentClip, conePos);
         prevIdx = curIdx;
     }
-
-    // Update is called once per frame
-    void Update()
+    public AudioClip pickClip()
     {
-        
+        AudioClip clip;
+        int this_idx = randomIdx(coneClips);
+        clip = coneClips[this_idx];
+
+        return clip;
+    }
+    public AudioSource PlayClipAt(AudioClip clip, Vector3 pos)
+    {
+        GameObject tempGO = new GameObject("TempAudio"); // create the temp object
+        tempGO.transform.position = pos; // set its position
+        AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
+        aSource.clip = clip; // define the clip
+        aSource.spatialBlend = 0.5f;
+        aSource.reverbZoneMix = 0.1f;
+        aSource.Play(); // start the sound
+        Destroy(tempGO, clip.length); // destroy object after clip duration
+        return aSource; // return the AudioSource reference
     }
 }
