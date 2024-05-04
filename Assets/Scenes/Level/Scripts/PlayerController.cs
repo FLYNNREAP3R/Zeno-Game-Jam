@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject playerAudioObj;
     private PlayerCharacterAudio playerAudioScript;
+    private PlayerFootStepAudio playerFtstp;
     
     public TMP_Text counterText;
     public TMP_Text winText;
@@ -55,11 +56,13 @@ public class PlayerController : MonoBehaviour
             Movement();
             Jump();
         }
+        
    }
 
     private void Movement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
+        
         
         // Checks if the player is being knocked back and the direction they are being knocked back from so player is knocked back in right direction
         if (knockbackCounter <= 0)
@@ -83,12 +86,32 @@ public class PlayerController : MonoBehaviour
         }
 
         // Checks if "d" is pressed to move right and flips the character facing right
-        if(horizontalInput > 0.01f)
+        if (horizontalInput > 0.01f)
+        {
             transform.localScale = Vector3.one;
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                playerAudioScript.playStep();
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+                playerAudioScript.stopStep();
+            }
+        }
 
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            playerAudioScript.playStep();
+        }
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            playerAudioScript.stopStep();
+        }
+
+
     }
 
     private void Jump()
