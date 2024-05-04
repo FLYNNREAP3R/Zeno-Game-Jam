@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     private bool grounded;
     private float jumpDelay;
+    private float moveDelay;
 
     private GameObject ui_scoreObj;
     private uiScoreAudio uiScoreScript;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public TMP_Text winText;
 
     public float knockbackForce;
-    public float knockbackCounter;
+    public float knockbackCounter = 0;
     public float knockbackTime;
     public bool knockFromRight;
 
@@ -137,6 +138,12 @@ public class PlayerController : MonoBehaviour
         jumpDelay++;
         yield return new WaitForSeconds(jumpDelay);
         grounded = true;
+        moveDelay++;
+        yield return new WaitForSeconds(moveDelay);
+        moveDelay = 0;
+        knockbackCounter = 0;
+        canMove = true;
+
 
     }
 
@@ -185,21 +192,18 @@ public class PlayerController : MonoBehaviour
             // play character hurt audio
             playerAudioScript.hurtAudio();
             ReduceAcorn();
-        }
-
-        // Work in progress Willie
-        if (collision.gameObject.CompareTag("pinecone"))
-        {   
-
-            canMove = false;
-            if (!canMove)
-            {
-                canMove = true;
-                
-            }
-            
+            Stunned();
         }
     }
+    private void Stunned()
+    {
+        // Sets move to false adds 1 to knockback counter then sets a delay to reset movement
+        canMove = false;
+        knockbackCounter++;
+        StartCoroutine("Delay");
+    }
+
+   
 
 
 
