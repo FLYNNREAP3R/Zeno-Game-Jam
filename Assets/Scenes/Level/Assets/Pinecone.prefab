@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coneClips:
-  - {fileID: 8300000, guid: 00f68a75553806a488636c0848d25c15, type: 3}
-  - {fileID: 8300000, guid: 4a7ab3b1bd0b59f4d8b46598434af9cd, type: 3}
-  - {fileID: 8300000, guid: 9340c656e9a68f042b0d34b4a78cfcd1, type: 3}
-  - {fileID: 8300000, guid: 31b8140087940c7419a11f70fc66bbc4, type: 3}
+  - {fileID: 8300000, guid: b659202c0bcfa204eaa460abf9654ed5, type: 3}
+  - {fileID: 8300000, guid: 71f471409e52c0c418340daa3dac44eb, type: 3}
+  - {fileID: 8300000, guid: a649e6fe8d0799e41a547202f7047b1b, type: 3}
+  - {fileID: 8300000, guid: 1aa62b466639b444dadddf68ec75dfa5, type: 3}
