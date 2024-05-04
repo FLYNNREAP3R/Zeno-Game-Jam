@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PineconeAudio : MonoBehaviour
 {
 
    // [SerializeField] AudioSource coneSource;
     [SerializeField] AudioClip[] coneClips;
+    [SerializeField] AudioMixerGroup outputMixer;
 
     int curIdx;
     int prevIdx;
@@ -57,6 +59,7 @@ public class PineconeAudio : MonoBehaviour
         tempGO.transform.position = pos; // set its position
         AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
         aSource.clip = clip; // define the clip
+        aSource.outputAudioMixerGroup = outputMixer;
         aSource.spatialBlend = 0.5f;
         aSource.reverbZoneMix = 0.1f;
         aSource.Play(); // start the sound

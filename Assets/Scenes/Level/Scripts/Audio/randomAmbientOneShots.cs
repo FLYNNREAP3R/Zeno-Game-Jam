@@ -12,7 +12,7 @@ public class randomAmbientOneShots : MonoBehaviour
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] oneShots;
 
-    [Range(0.5f, 1.8f)]
+    
     public float pitchMin = 0.5f;
     public float pitchMax = 1.8f;
     

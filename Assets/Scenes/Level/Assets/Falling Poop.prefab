@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633517fec5043284ca84f852fa5de950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallPoopAudioSource: {fileID: 0}
+  fallPoopAudioSource: {fileID: 5999350810146270221}
   fallPoopAudio:
   - {fileID: 8300000, guid: 4c4783f6553d6134899d4a12bbfb67bd, type: 3}
   - {fileID: 8300000, guid: 7fe6fe878a2f86a41b42dafd428e4df3, type: 3}
@@ -205,7 +205,7 @@ AudioSource:
   m_GameObject: {fileID: 7364278093280899174}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
+  OutputAudioMixerGroup: {fileID: 3146670265444903140, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -214,7 +214,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 63
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -252,7 +252,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.57
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -282,7 +282,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.309
       inSlope: 0
       outSlope: 0
       tangentMode: 0

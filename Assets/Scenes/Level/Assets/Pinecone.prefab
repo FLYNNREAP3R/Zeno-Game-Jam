@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7bddfffab9feb41b60c1615946dd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 4837501249101659036, guid: f7347f3d0eef22546842c34281e37254, type: 3}
+  playerController: {fileID: 0}
 --- !u!114 &7069123865323567924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +162,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 71f471409e52c0c418340daa3dac44eb, type: 3}
   - {fileID: 8300000, guid: a649e6fe8d0799e41a547202f7047b1b, type: 3}
   - {fileID: 8300000, guid: 1aa62b466639b444dadddf68ec75dfa5, type: 3}
+  outputMixer: {fileID: 3146670265444903140, guid: bf0b8b490fd50604abf72335c690625a, type: 2}
