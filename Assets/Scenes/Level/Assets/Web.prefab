@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2334855512364407220}
   - component: {fileID: 2079393507765336490}
   - component: {fileID: 5364204853522170215}
+  - component: {fileID: 1878257701948410013}
   m_Layer: 0
   m_Name: Web
   m_TagString: web
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.8404, y: -2.8523, z: 0}
-  m_LocalScale: {x: 1.0218545, y: 1.0124899, z: 0.9678264}
+  m_LocalScale: {x: 1.0218545, y: 1.0302086, z: 0.9678264}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,9 +120,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015769832, y: 0.008990295}
+  m_Offset: {x: 0.015769832, y: 0.05200164}
   serializedVersion: 2
-  m_Radius: 0.59895515
+  m_Radius: 0.6419665
 --- !u!50 &2079393507765336490
 Rigidbody2D:
   serializedVersion: 4
@@ -162,3 +163,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
+  webAudio: {fileID: 1878257701948410013}
+--- !u!114 &1878257701948410013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739592946255273946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1f3e5219618224a8ee5522f65ea80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  webClips:
+  - {fileID: 8300000, guid: cec2f6cd458448448893c55b2b67ea71, type: 3}
+  - {fileID: 8300000, guid: 9b755a5017dee904c8ad20b5c1f7ced7, type: 3}
+  - {fileID: 8300000, guid: c47ea6d25a41a734481298d3a77c6720, type: 3}
+  - {fileID: 8300000, guid: e03dc43edee2a9941b0a1bc828109aef, type: 3}

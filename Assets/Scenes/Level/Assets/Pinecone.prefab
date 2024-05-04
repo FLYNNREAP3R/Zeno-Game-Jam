@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1486233078922616827}
   - component: {fileID: 4776449847333313134}
   - component: {fileID: 4627572878358601528}
+  - component: {fileID: 7069123865323567924}
   m_Layer: 0
   m_Name: Pinecone
   m_TagString: pinecone
@@ -143,4 +144,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7bddfffab9feb41b60c1615946dd62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 5110977555473726637, guid: f7347f3d0eef22546842c34281e37254, type: 3}
