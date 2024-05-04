@@ -42,6 +42,7 @@ public class WebAudio : MonoBehaviour
         tempGO.transform.position = pos; // set its position
         AudioSource aSource = tempGO.AddComponent<AudioSource>(); // add an audio source
         aSource.clip = clip; // define the clip
+        aSource.volume = 1f;
         aSource.spatialBlend = 0.5f;
         aSource.reverbZoneMix = 0.1f;
         aSource.Play(); // start the sound
