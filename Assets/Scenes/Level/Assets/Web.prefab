@@ -181,3 +181,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9b755a5017dee904c8ad20b5c1f7ced7, type: 3}
   - {fileID: 8300000, guid: c47ea6d25a41a734481298d3a77c6720, type: 3}
   - {fileID: 8300000, guid: e03dc43edee2a9941b0a1bc828109aef, type: 3}
+  outputMixer: {fileID: 3146670265444903140, guid: bf0b8b490fd50604abf72335c690625a, type: 2}

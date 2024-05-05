@@ -9,8 +9,9 @@ public class MenuAudio : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     //[SerializeField] AudioClip uiSelectAudio;
     [SerializeField] AudioClip[] UISelectAudioList;
-    [SerializeField] AudioClip uiHoverAudio;
+    [SerializeField] AudioClip[] uiHoverAudio;
     int PrevIdx;
+    int prevHoverIdx;
 
     int randomIdx(AudioClip[] audiocliparray)
     {
@@ -27,6 +28,12 @@ public class MenuAudio : MonoBehaviour
     {
         //Create clip index number to play random sound
         int currentIdx = randomIdx(UISelectAudioList);
+
+        if (currentIdx == PrevIdx)
+        {
+            currentIdx = randomIdx(UISelectAudioList);
+        }
+
         AudioClip currentClip = UISelectAudioList[currentIdx];
         // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
         //if (currentIdx == PrevIdx)
@@ -35,11 +42,24 @@ public class MenuAudio : MonoBehaviour
         //    currentClip = UISelectAudioList[currentIdx];
         //Debug.Log("Current Index: " + currentIdx);
         //Debug.Log("Prev Index: " + PrevIdx);
-
+        audioSource.volume = 1.0f;
         audioSource.PlayOneShot(currentClip);
         PrevIdx = currentIdx; 
 
     }
+    public void OnHover()
+    {
+        int currentIdx = randomIdx(uiHoverAudio);
+        if (currentIdx == prevHoverIdx)
+        {
+            currentIdx = randomIdx(uiHoverAudio);
+        }
+        AudioClip currentClip = uiHoverAudio[currentIdx];
+        audioSource.volume = .8f;
+        audioSource.PlayOneShot(currentClip);
+        prevHoverIdx = currentIdx;
+    }
+
     //public void OnClick()
     //{
     //    if (uiSelectAudio && audioSource) 

@@ -16,6 +16,14 @@ public class FallingPoopAudio : MonoBehaviour
     [SerializeField] int curIdx;
     [SerializeField] int prevIdx;
 
+    public float pitchMin = 0.5f;
+    public float pitchMax = 1.8f;
+
+    public float volMin = 0.3f;
+    public float volMax = 0.7f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,17 +44,11 @@ public class FallingPoopAudio : MonoBehaviour
 
     public void poopAudio()
     {
+        setClipParam();
         //Create clip index number to play random sound
         curIdx = randomIdx(fallPoopAudio);
         AudioClip currentClip;
 
-        // 5/2/24 disabled if statement. Resolved in randomIdx function.
-        // if currentIdx eq PrevIdx, then re-randomize sound. Prevents 1 sound playing twice in a row.
-
-        //if (curIdx == prevIdx)
-        //    currentClip = fallPoopAudio[curIdx + 1];
-        //else
-        //    currentClip = fallPoopAudio[curIdx];
 
         currentClip = fallPoopAudio[curIdx];
 
@@ -57,4 +59,17 @@ public class FallingPoopAudio : MonoBehaviour
         prevIdx = curIdx;
 
     }
+
+    void setClipParam()
+    {
+
+        float playVol = Random.Range(volMin, volMax);
+        float playPitch = Random.Range(pitchMin, pitchMax);
+        fallPoopAudioSource.volume = playVol;
+        //Debug.Log("vol: " + playVol);
+        fallPoopAudioSource.pitch = playPitch;
+        //Debug.Log("pitch: " + playPitch);
+
+    }
+
 }
