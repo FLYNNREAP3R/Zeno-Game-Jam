@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool grounded;
     private float jumpDelay;
     private float moveDelay;
+    private float jumpCounter;
 
     private GameObject ui_scoreObj;
     private uiScoreAudio uiScoreScript;
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpForce);
             playerAudioScript.jumpAudio();
             grounded = false;
-            StartCoroutine("Delay");
+            //StartCoroutine("Delay");
         }
     }
 
