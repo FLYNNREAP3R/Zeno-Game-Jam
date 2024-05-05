@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public float knockbackTime;
     public bool knockFromRight;
 
+    private Vector3 thisScale;
+
     public bool canMove = true;
 
     private void Start()
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     
    private void Awake()
    {
+        thisScale = gameObject.transform.localScale;
         ui_scoreObj = GameObject.Find("UI");
         uiScoreScript = ui_scoreObj.GetComponent<uiScoreAudio>();
         playerAudioObj = GameObject.Find("Player");
@@ -111,12 +114,14 @@ public class PlayerController : MonoBehaviour
         // Checks if "d" is pressed to move right and flips the character facing right
         if (horizontalInput > 0.01f)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = thisScale;
+            //transform.localScale = Vector3.one;
         }
 
         // Checks if "a" is pressed to move left and flips the character facing left
         else if (horizontalInput < -0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-thisScale.x, thisScale.y, thisScale.z);
+            //transform.localScale = new Vector3(-1, 1, 1);
 
 
     }
